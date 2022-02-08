@@ -1,0 +1,25 @@
+basic-auth:
+  enabled: false
+
+prometheus: # https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus
+  enabled: false
+
+loki: # https://github.com/grafana/helm-charts/tree/main/charts/loki
+  enabled: false
+
+promtail: # https://github.com/grafana/helm-charts/tree/main/charts/promtail
+  enabled: false
+
+fluent-bit: # https://github.com/grafana/helm-charts/tree/main/charts/fluent-bit
+  enabled: false
+
+grafana: # https://github.com/grafana/helm-charts/tree/main/charts/grafana
+  enabled: false
+  image:
+    tag: 8.3.4
+
+influxdb:
+  enabled: false
+
+telegraf:
+  enabled: false

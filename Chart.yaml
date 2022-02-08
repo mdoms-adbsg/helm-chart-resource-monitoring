@@ -1,0 +1,69 @@
+apiVersion: "v2"
+name: monitoring
+version: 0.1.0
+appVersion: 0.1.0
+description: "Monitoring: like Prometheus, but with logs."
+home: https://grafana.com/loki
+icon: https://raw.githubusercontent.com/grafana/loki/master/docs/sources/logo.png
+sources:
+- https://github.com/grafana/loki
+
+maintainers:
+- name: Monitoring Maintainers
+  email: marc@software40.io
+
+kubeVersion: ^1.10.0
+
+dependencies:
+- name: basic-auth
+  version: 0.1.0
+  # repository: "file://charts/basic-auth"
+  condition: basic-auth.enabled
+- name: "loki"
+  condition: loki.enabled
+  repository: "https://grafana.github.io/helm-charts"
+  version: "^2.3.0"
+- name: "promtail"
+  condition: promtail.enabled
+  repository: "https://grafana.github.io/helm-charts"
+  version: "^2.2.0"
+- name: "fluent-bit"
+  condition: fluent-bit.enabled
+  repository: "https://grafana.github.io/helm-charts"
+  version: "^2.2.0"
+- name: "grafana"
+  condition: grafana.enabled
+  version: "~6.21.2"
+  repository:  "https://grafana.github.io/helm-charts"
+- name: "prometheus"
+  condition: prometheus.enabled
+  version: "~15.0.1"
+  repository:  "https://prometheus-community.github.io/helm-charts"
+# - name: "filebeat"
+#   condition: filebeat.enabled
+#   version: "~7.8.0"
+#   repository:  "https://helm.elastic.co"
+# - name: "logstash"
+#   condition: logstash.enabled
+#   version: "~7.8.0"
+#   repository:  "https://helm.elastic.co"
+- name: influxdb2
+  alias: influxdb
+  condition: influxdb.enabled
+  version: 2.0.8
+  # repository: "file://charts/influxdb"
+- name: telegraf-ds
+  alias: telegraf
+  condition: telegraf.enabled
+  version: 1.0.29
+  # repository: "file://charts/telegraf"
+# - name: "influxdb2"
+#   alias: influxdb
+#   condition: influxdb.enabled
+#   version: "~2.0.8"
+#   repository:  "https://helm.influxdata.com/"
+# - name: "telegraf-ds"
+#   alias: telegraf
+#   condition: telegraf.enabled
+#   version: "~1.0.29"
+#   repository:  "https://helm.influxdata.com/"
